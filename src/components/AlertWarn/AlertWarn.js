@@ -1,16 +1,12 @@
+import styles from './AlertWarn.module.css';
 import { Alert, Image } from 'react-bootstrap';
 import hint from '../../images/access-hint.png';
 
 export default function AlertWarn({ onAlertClose }) {
   return (
     <Alert
+      className={styles.container}
       variant="danger"
-      style={{
-        position: 'absolute',
-        top: '20px',
-        right: '20px',
-        maxWidth: '350px',
-      }}
       transition
       onClose={onAlertClose}
       dismissible
@@ -22,7 +18,7 @@ export default function AlertWarn({ onAlertClose }) {
         You should give an access in the settings. For example in Chrome you
         could click the button to see access menu.
       </p>
-      <Image width="300" src={hint} rounded />
+      <Image src={hint} rounded />
       <p>
         Please allow in your browser and when reload page and click on Allow
         button.
