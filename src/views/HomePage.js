@@ -3,11 +3,12 @@ import React, { useState, useEffect } from 'react';
 import Modal from '../components/AllowModal';
 import AlertWarn from '../components/AlertWarn';
 import { getLocationByCoordinate } from '../services/weather-service';
+import WeatherCard from '../components/WeatherCard';
 
 export default function HomePage() {
   const [showModal, setShowModal] = useState(true);
   const [allowSharePosition, setAllowSharePosition] = useState(false);
-  const [currentWeather, setCurrentWeather] = useState({});
+  const [currentWeather, setCurrentWeather] = useState();
   const [showAlert, setShowAlert] = useState(false);
 
   const onModalClose = e => {
@@ -45,9 +46,18 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>Home Page</h1>
       <Modal show={showModal} onButtonClick={onModalClose} />
       {showAlert && <AlertWarn onAlertClose={onAlertClose} />}
+      {currentWeather && (
+        <WeatherCard
+          weather={currentWeather.weather[0]}
+          name={currentWeather.name}
+          country={currentWeather.sys.country}
+          main={currentWeather.main}
+          speed={currentWeather.wind.speed}
+          coords={currentWeather.coord}
+        />
+      )}
     </div>
   );
 }
