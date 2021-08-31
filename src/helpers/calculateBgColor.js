@@ -6,7 +6,11 @@ const calculateBgColor = temp => {
       result = '#00ffff';
       break;
 
-    case temp >= 10 && temp < 30:
+    case temp > -10 && temp <= 10:
+      result = '#ffe4c4';
+      break;
+
+    case temp > 10 && temp <= 30:
       result = '#fff700';
       break;
 
