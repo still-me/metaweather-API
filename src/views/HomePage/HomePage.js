@@ -10,6 +10,7 @@ import AlertError from '../../components/AlertError';
 import WeatherCard from '../../components/WeatherCard';
 import SearchForm from '../../components/SearchForm';
 import CentredContainer from '../../components/CentredContainer';
+import Range from '../../components/Range';
 import destructureWeatherData from '../../helpers/destructureWeatherData';
 
 export default function HomePage() {
@@ -53,6 +54,11 @@ export default function HomePage() {
     }
   };
 
+  const onRangeChange = ({ target }) => {
+    const temp = target.value;
+    setCurrentWeather(weather => ({ ...weather, temp }));
+  };
+
   useEffect(() => {
     if (allowSharePosition) {
       const onSuccess = async ({ coords: { latitude, longitude } }) => {
@@ -80,9 +86,16 @@ export default function HomePage() {
   return (
     <>
       <SearchForm onSubmit={onSearchFormSubmit} />
-      <CentredContainer>
-        {currentWeather && <WeatherCard currentWeather={currentWeather} />}
-      </CentredContainer>
+      {currentWeather && (
+        <CentredContainer>
+          <WeatherCard currentWeather={currentWeather} />
+          <Range
+            currentTemperature={currentWeather.temp}
+            handleChange={onRangeChange}
+          />
+        </CentredContainer>
+      )}
+
       <Modal show={showModal} onButtonClick={onModalClose} />
       {showAlertWarn && <AlertWarn onAlertClose={onAlertWarnClose} />}
       {searchQueryErrorName && (
