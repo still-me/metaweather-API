@@ -1,42 +1,60 @@
 import React from 'react';
 
+import calculateBgColor from '../../helpers/calculateBgColor';
+import styles from './WeatherCard.module.css';
+
 export default function WeatherCard({
-  weather: { icon, description },
-  name,
-  country,
-  main: { temp, feels_like, temp_min, temp_max, humidity },
-  speed,
-  coords: { lon, lat },
+  currentWeather: {
+    icon,
+    description,
+    name,
+    country,
+    temp,
+    feels_like,
+    temp_min,
+    temp_max,
+    humidity,
+    speed,
+    lon,
+    lat,
+  },
 }) {
   return (
     <div
+      className={styles.Card}
       style={{
-        maxWidth: '700px',
-        maxHeight: '500px',
-        padding: '25px',
-        outline: '1px solid red',
+        backgroundColor: calculateBgColor(temp),
       }}
     >
-      <img
-        src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-        alt={description}
-      />
-
-      <div>
-        <p>{`${name}, ${country}`}</p>
+      <h2
+        className={styles.currentDate}
+      >{`${new Date().toLocaleDateString()}`}</h2>
+      <div className={styles.infoWrapper}>
         <img
-          src={`https://openweathermap.org/images/flags/${country.toLowerCase()}.png`}
-          alt={country}
+          width="100"
+          src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+          alt={description}
         />
-      </div>
 
-      <div>
-        <p>{`${Math.round(temp)}°С (feels like ${Math.round(
-          feels_like,
-        )}°С), temperature from ${Math.round(temp_min)} to ${Math.round(
-          temp_max,
-        )}°С, wind ${speed} m/s, humidity ${humidity}%`}</p>
-        <p>{`Geo coords: [${lon}, ${lat}]`}</p>
+        <div>
+          <div className={styles.country}>
+            <p className={styles.countryName}>{`${name}, ${country}`}</p>
+            <img
+              width="30"
+              src={`https://openweathermap.org/images/flags/${country.toLowerCase()}.png`}
+              alt={country}
+            />
+          </div>
+          <p>
+            <b className={styles.currentTemp}>
+              {`${Math.round(temp)}°С (feels like ${Math.round(feels_like)}°С)`}
+            </b>
+            {`, temperature from ${Math.round(temp_min)} to ${Math.round(
+              temp_max,
+            )}°С, wind ${speed} m/s, humidity ${humidity}%`}
+          </p>
+          <p>{`Geo coords: [${lon}, ${lat}]`}</p>
+        </div>
       </div>
     </div>
   );

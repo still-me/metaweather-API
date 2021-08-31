@@ -1,0 +1,33 @@
+.Card {
+  max-width: 700px;
+  padding: 25px;
+  box-shadow: 0px 1px 10px 3px rgba(42, 117, 122, 0.61);
+  border-radius: 5px;
+}
+
+.infoWrapper {
+  display: flex;
+}
+
+.country {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.countryName {
+  margin-right: 10px;
+  text-align: center;
+}
+
+.currentTemp {
+  background-color: rgba(128, 128, 128, 0.541);
+  color: white;
+  padding: 5px;
+  border: 1px transparent;
+  border-radius: 13px;
+}
+
+.currentDate {
+  text-align: center;
+  font-size: 20px;
+}
