@@ -30,7 +30,26 @@ export default function HomePage() {
       const onSuccess = async ({ coords: { latitude, longitude } }) => {
         const data = await getLocationByCoordinate(latitude, longitude);
 
-        setCurrentWeather({ ...data });
+        const { icon, description } = data.weather[0];
+        const { name } = data;
+        const { country } = data.sys;
+        const { temp, feels_like, temp_min, temp_max, humidity } = data.main;
+        const { speed } = data.wind;
+        const { lon, lat } = data.coord;
+        setCurrentWeather({
+          icon,
+          description,
+          name,
+          country,
+          temp,
+          feels_like,
+          temp_min,
+          temp_max,
+          humidity,
+          speed,
+          lon,
+          lat,
+        });
       };
 
       const onError = ({ code }) => {
@@ -41,23 +60,13 @@ export default function HomePage() {
 
       navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
-    return () => {};
   }, [allowSharePosition]);
 
   return (
     <div>
       <Modal show={showModal} onButtonClick={onModalClose} />
       {showAlert && <AlertWarn onAlertClose={onAlertClose} />}
-      {currentWeather && (
-        <WeatherCard
-          weather={currentWeather.weather[0]}
-          name={currentWeather.name}
-          country={currentWeather.sys.country}
-          main={currentWeather.main}
-          speed={currentWeather.wind.speed}
-          coords={currentWeather.coord}
-        />
-      )}
+      {currentWeather && <WeatherCard currentWeather={currentWeather} />}
     </div>
   );
 }
