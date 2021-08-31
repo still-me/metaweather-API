@@ -1,6 +1,6 @@
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal } from 'react-bootstrap';
 
-export default function AllowModal({ children, show, onButtonClick }) {
+export default function AllowModal({ show, onButtonClick }) {
   return (
     <Modal show={show}>
       <Modal.Header>
