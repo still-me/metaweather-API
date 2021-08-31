@@ -30,11 +30,13 @@ export default function WeatherCard({
         className={styles.currentDate}
       >{`${new Date().toLocaleDateString()}`}</h2>
       <div className={styles.infoWrapper}>
-        <img
-          width="100"
-          src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-          alt={description}
-        />
+        <div className={styles.weatherIconWrapper}>
+          <img
+            width="100"
+            src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+            alt={description}
+          />
+        </div>
 
         <div>
           <div className={styles.country}>
