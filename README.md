@@ -16,25 +16,26 @@ You will also see any lint errors in the console.
 
 `npm install netlify-cli -g`
 
-if you receive error this command could help
+if you receive error this command could help\
+
 `sudo npm install netlify-cli -g --unsafe-perm`
 
-To deploy project please run:
+### To deploy project please run:
 
 `npm run deploy`
 
-in menu choose:
+* in menu choose:
 
-`Create & configure a new site` and tab Enter
+`Create & configure a new site` and tab _Enter_
 
-then
+* then
 
 `Team` choose and tab Enter
 
-then
+* then
 
 `Site name` write unique name of your website
 
-finnaly you can run
+* finnaly you can run
 
 `netlify open --site` or click the link `Website URL`
