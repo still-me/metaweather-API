@@ -1,3 +1,4 @@
+import styles from './AllowModal.module.css';
 import { Button, Modal } from 'react-bootstrap';
 
 export default function AllowModal({ show, onButtonClick }) {
@@ -11,10 +12,16 @@ export default function AllowModal({ show, onButtonClick }) {
         region?
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" data-action="allow" onClick={onButtonClick}>
+        <Button
+          className={styles.button}
+          variant="primary"
+          data-action="allow"
+          onClick={onButtonClick}
+        >
           Allow
         </Button>
         <Button
+          className={styles.button}
           variant="primary"
           data-action="no allow"
           onClick={onButtonClick}
