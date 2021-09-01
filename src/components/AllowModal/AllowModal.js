@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import styles from './AllowModal.module.css';
 import { Button, Modal } from 'react-bootstrap';
 
@@ -32,3 +34,8 @@ export default function AllowModal({ show, onButtonClick }) {
     </Modal>
   );
 }
+
+AllowModal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  onButtonClick: PropTypes.func.isRequired,
+};

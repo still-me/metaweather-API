@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types';
+
 import styles from './AlertError.module.css';
 import { Alert } from 'react-bootstrap';
 
-export default function AlertWarn({ onAlertClose, name }) {
+export default function AlerError({ onAlertClose, name }) {
   return (
     <Alert
       className={styles.container}
@@ -15,3 +17,8 @@ export default function AlertWarn({ onAlertClose, name }) {
     </Alert>
   );
 }
+
+AlerError.propTypes = {
+  onAlertClose: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+};

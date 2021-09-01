@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 import calculateBgColor from '../../helpers/calculateBgColor';
 import styles from './WeatherCard.module.css';
@@ -61,3 +61,18 @@ export default function WeatherCard({
     </div>
   );
 }
+
+WeatherCard.propTypes = {
+  icon: PropTypes.string,
+  description: PropTypes.string,
+  name: PropTypes.string,
+  country: PropTypes.string,
+  temp: PropTypes.number,
+  feels_like: PropTypes.number,
+  temp_min: PropTypes.number,
+  temp_max: PropTypes.number,
+  humidity: PropTypes.number,
+  speed: PropTypes.number,
+  lon: PropTypes.number,
+  let: PropTypes.number,
+};

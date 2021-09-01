@@ -12,6 +12,6 @@ input[type='range']:focus::-webkit-slider-runnable-track {
 
 .rangeContainer {
   position: absolute;
-  bottom: 50px;
+  bottom: 1vh;
   max-width: 100%;
 }

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import styles from './AlertWarn.module.css';
 import { Alert, Image } from 'react-bootstrap';
 import hint from '../../images/access-hint.png';
@@ -26,3 +28,7 @@ export default function AlertWarn({ onAlertClose }) {
     </Alert>
   );
 }
+
+AlertWarn.propTypes = {
+  onAlertClose: PropTypes.func.isRequired,
+};
